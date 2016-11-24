@@ -20,6 +20,12 @@ cd "qemu-$VERSION"
   --prefix="$HOME/qemu" \
   --target-list="$TARGETS" \
   --disable-docs \
+  --disable-sdl \
+  --disable-gtk \
+  --disable-gnutls \
+  --disable-gcrypt \
+  --disable-nettle \
+  --disable-curses \
   --static
 
 make -j4
