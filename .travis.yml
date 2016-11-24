@@ -1,0 +1,23 @@
+language: c
+
+sudo: false
+
+env:
+  - QEMU_VERSION=2.7.0
+  - QEMU_VERSION=2.8.0-rc1
+
+addons:
+  apt:
+    packages:
+      - build-essential
+      - autoconf
+      - libtool
+      - pkg-config
+      - flex
+      - bison
+      - zlib1g-dev
+      - libglib2.0-dev
+      - libpixman-1-dev
+
+script: travis-qemu.sh
+after_script: $HOME/qemu/bin/qemu-img --version
