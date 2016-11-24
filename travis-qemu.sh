@@ -9,6 +9,9 @@ TARGETS=$(echo $ARCHES | sed 's#$# #;s#\W#-softmmu #g')
 echo "VERSION: $VERSION"
 echo "TARGETS: $TARGETS"
 
+rm -rf qemu "qemu-$VERSION"
+
+# Checking for a tarball before downloading makes testing easier :-)
 test -f "qemu-$VERSION.tar.bz2" || wget "http://wiki.qemu-project.org/download/qemu-$VERSION.tar.bz2"
 tar -xf "qemu-$VERSION.tar.bz2"
 cd "qemu-$VERSION"
