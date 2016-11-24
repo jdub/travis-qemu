@@ -19,5 +19,5 @@ addons:
       - libglib2.0-dev
       - libpixman-1-dev
 
-script: travis-qemu.sh
+script: bash -e travis-qemu.sh
 after_script: $HOME/qemu/bin/qemu-img --version
