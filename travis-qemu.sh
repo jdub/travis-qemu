@@ -19,7 +19,8 @@ cd "qemu-$VERSION"
 ./configure \
   --prefix="$HOME/qemu" \
   --target-list="$TARGETS" \
-  --disable-docs
+  --disable-docs \
+  --static
 
 make -j4
 make install
