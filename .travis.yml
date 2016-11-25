@@ -19,5 +19,9 @@ env:
 #       - libglib2.0-dev
 #       - libpixman-1-dev
 
-script: bash -e travis-qemu.sh
-after_script: $HOME/qemu/bin/qemu-img --version
+script:
+  - bash -e travis-qemu.sh
+  - bash -e travis-qemu.sh
+
+after_script:
+  - $HOME/qemu/bin/qemu-img --version
