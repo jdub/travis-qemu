@@ -28,7 +28,7 @@ cache:
     - $HOME/qemu
 
 before_script:
-  - QEMU_ARCH="arm mipsel" bash -e travis-qemu.sh
+  - QEMU_ARCHES="arm mipsel" bash -e travis-qemu.sh
   - export PATH=$PATH:$HOME/qemu/bin
 ```
 
@@ -42,8 +42,8 @@ cache:
     - $HOME/qemu
 
 env:
-  - PROJARCH=build-arm    QEMU_ARCH=arm
-  - PROJARCH=build-mipsel QEMU_ARCH=mipsel QEMU_VERSION=2.8.0-rc1
+  - PROJARCH=build-arm    QEMU_ARCHES=arm
+  - PROJARCH=build-mipsel QEMU_ARCHES=mipsel QEMU_VERSION=2.8.0-rc1
 
 before_script:
   - bash -e travis-qemu.sh
