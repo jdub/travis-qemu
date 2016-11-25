@@ -2,12 +2,48 @@
 
 Use modern qemu on Travis CI
 
+## Usage
+
+The default configuration builds qemu 2.7.0 for arm, aarch64, i386, and x86_64 guests:
+
 ```yaml
 sudo: false
 
 cache:
   directories:
     - $HOME/qemu
+
+before_script:
+  - bash -e travis-qemu.sh
+  - export PATH=$PATH:$HOME/qemu/bin
+```
+
+If you require different guest architectures:
+
+```yaml
+sudo: false
+
+cache:
+  directories:
+    - $HOME/qemu
+
+before_script:
+  - QEMU_ARCH="arm mipsel" bash -e travis-qemu.sh
+  - export PATH=$PATH:$HOME/qemu/bin
+```
+
+Or perhaps you use a matrix for separate build and test runs across different guest architectures and qemu versions:
+
+```yaml
+sudo: false
+
+cache:
+  directories:
+    - $HOME/qemu
+
+env:
+  - PROJARCH=build-arm    QEMU_ARCH=arm
+  - PROJARCH=build-mipsel QEMU_ARCH=mipsel QEMU_VERSION=2.8.0-rc1
 
 before_script:
   - bash -e travis-qemu.sh
