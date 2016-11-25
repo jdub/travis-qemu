@@ -1,6 +1,8 @@
 # travis-qemu [![Build Status](https://travis-ci.org/jdub/travis-qemu.svg?branch=master)](https://travis-ci.org/jdub/travis-qemu)
 
-Use modern qemu on Travis CI
+Modern qemu on Travis CI
+
+Check out [travis-qemu-example](https://github.com/jdub/travis-qemu-example) for a demonstration of a cross-compiled Go program running under qemu's "Linux CPU emulator".
 
 ## Usage
 
