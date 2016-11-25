@@ -1,4 +1,5 @@
-# travis-qemu
+# travis-qemu [![Build Status](https://travis-ci.org/jdub/travis-qemu.svg?branch=master)](https://travis-ci.org/jdub/travis-qemu)
+
 Use modern qemu on Travis CI
 
 ```yaml
