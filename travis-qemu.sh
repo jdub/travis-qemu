@@ -5,10 +5,16 @@ VERSION=${QEMU_VERSION:=2.7.0}
 ARCHES=${QEMU_ARCHES:=arm aarch64 i386 x86_64}
 TARGETS=${QEMU_TARGETS:=$(echo $ARCHES | sed 's#$# #;s#\([^ ]*\) #\1-softmmu \1-linux-user #g')}
 
+if echo "$VERSION $TARGETS" | cmp --silent $HOME/qemu/.build -; then
+  echo "qemu $VERSION up to date!"
+  exit 0
+fi
+
 echo "VERSION: $VERSION"
 echo "TARGETS: $TARGETS"
 
-rm -rf qemu "qemu-$VERSION"
+cd $HOME
+rm -rf qemu
 
 # Checking for a tarball before downloading makes testing easier :-)
 test -f "qemu-$VERSION.tar.bz2" || wget "http://wiki.qemu-project.org/download/qemu-$VERSION.tar.bz2"
@@ -29,3 +35,5 @@ cd "qemu-$VERSION"
 
 make -j4
 make install
+
+echo "$VERSION $TARGETS" > $HOME/qemu/.build
