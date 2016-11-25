@@ -3,8 +3,7 @@ set -e
 
 VERSION=${QEMU_VERSION:=2.7.0}
 ARCHES=${QEMU_ARCHES:=arm aarch64 i386 x86_64}
-
-TARGETS=$(echo $ARCHES | sed 's#$# #;s#\W#-softmmu #g')
+TARGETS=${QEMU_TARGETS:=$(echo $ARCHES | sed 's#$# #;s#\([^ ]*\) #\1-softmmu \1-linux-user #g')}
 
 echo "VERSION: $VERSION"
 echo "TARGETS: $TARGETS"
